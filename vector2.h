@@ -62,13 +62,17 @@ public:
         _y = newY;
     }
     
-    float normalize() {
-        return 0.0;
+    Vec2 normalize() {
+        float l = length();
+        return Vec2(_x/l, _y/l);
     }
     
     Vec2 getPerpen() {
-        float l = length();
-        return Vec2(l * cos(M_PI/2), l * sin(M_PI/2));
+        return Vec2(-_y, _x);
+    }
+    
+    Vec2 getMidPoint(Vec2 other) {
+        return Vec2((other.getX() + _x)/2, (other.getY() + _y)/2);
     }
 
 private:
